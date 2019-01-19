@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import TopMenu from "./components/topmenu";
+import TopMenu from "./components/TopMenu";
 
 class App extends Component {
   constructor(props) {
