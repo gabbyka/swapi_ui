@@ -3,10 +3,24 @@ import "./App.css";
 import TopMenu from "./components/topMenu";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeMenuItem: "People"
+    };
+  }
+
+  handleMenuItemChange = (e, { name }) => {
+    this.setState({ activeMenuItem: name });
+  };
+
   render() {
     return (
       <React.Fragment>
-        <TopMenu />
+        <TopMenu
+          activeMenuItem={this.state.activeMenuItem}
+          onMenuItemChange={this.handleMenuItemChange}
+        />
       </React.Fragment>
     );
   }
