@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import TopMenu from "./components/TopMenu";
+import AppContent from "./components/AppContent";
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +22,8 @@ class App extends Component {
           activeMenuItem={this.state.activeMenuItem}
           onMenuItemChange={this.handleMenuItemChange}
         />
+
+        <AppContent />
       </React.Fragment>
     );
   }
