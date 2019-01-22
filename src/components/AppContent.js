@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Segment } from "semantic-ui-react";
+import ResultList from "./ResultList";
 
 const style = {
   grid: {
@@ -13,7 +14,9 @@ class AppContent extends Component {
     return (
       <Grid columns={2} stackable divided relaxed style={style.grid}>
         <Grid.Column>
-          <Segment>Content</Segment>
+          <Segment>
+            <ResultList />
+          </Segment>
         </Grid.Column>
         <Grid.Column>
           <Segment>Content</Segment>
