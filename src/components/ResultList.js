@@ -2,7 +2,19 @@ import React, { Component } from "react";
 import { List } from "semantic-ui-react";
 
 class ResultList extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: null
+    };
+  }
+  componentDidMount() {
+    fetch("https://swapi.co/api/people")
+      .then(response => response.json())
+      .then(data => this.setState({ data }));
+  }
+
   render() {
     return (
       <List celled selection>
@@ -23,6 +35,11 @@ class ResultList extends Component {
             He's also a dog
           </List.Content>
         </List.Item>
+        {this.state.data.map(person => (
+          <List.Item key={person.id}>
+            <List.Content>{person.name}</List.Content>
+          </List.Item>
+        ))}
       </List>
     );
   }
