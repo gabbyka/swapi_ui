@@ -1,42 +1,44 @@
 import React, { Component } from "react";
 import { List } from "semantic-ui-react";
+import axios from "axios";
+
+const API = "https://swapi.co/api/people/";
 
 class ResultList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: null
+      hits: [],
+      isLoading: false,
+      error: null
     };
   }
   componentDidMount() {
-    fetch("https://swapi.co/api/people")
-      .then(response => response.json())
-      .then(data => this.setState({ data }));
+    //this.setState({ isLoading: true });
+
+    axios
+      .get(API)
+      .then(result =>
+        this.setState({
+          hits: result.data.results,
+          isLoading: false
+        })
+      )
+      .catch(error =>
+        this.setState({
+          error,
+          isLoading: false
+        })
+      );
   }
 
   render() {
+    const { hits } = this.state;
     return (
       <List celled selection>
-        <List.Item>
-          <List.Content>
-            <List.Header>Snickerdoodle</List.Header>
-            An excellent companion
-          </List.Content>
-        </List.Item>
-        <List.Item>
-          <List.Content>
-            <List.Header>Poodle</List.Header>A poodle, it's pretty basic
-          </List.Content>
-        </List.Item>
-        <List.Item>
-          <List.Content>
-            <List.Header>Paulo</List.Header>
-            He's also a dog
-          </List.Content>
-        </List.Item>
-        {this.state.data.map(person => (
-          <List.Item key={person.id}>
+        {hits.map(person => (
+          <List.Item key={person.url}>
             <List.Content>{person.name}</List.Content>
           </List.Item>
         ))}
