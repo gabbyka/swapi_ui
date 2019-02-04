@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List } from "semantic-ui-react";
+import { List, Placeholder, Container } from "semantic-ui-react";
 
 class ResultList extends Component {
   constructor(props) {
@@ -9,7 +9,20 @@ class ResultList extends Component {
   }
 
   render() {
-    const { hits } = this.props;
+    const { hits, isLoading } = this.props;
+
+    if (isLoading) {
+      return (
+        <Placeholder>
+          <Placeholder.Line length="full" />
+          <Placeholder.Line length="full" />
+          <Placeholder.Line length="full" />
+          <Placeholder.Line length="full" />
+          <Placeholder.Line length="full" />
+        </Placeholder>
+      );
+    }
+
     return (
       <List celled selection>
         {hits.map(item => (

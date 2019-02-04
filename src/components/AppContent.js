@@ -15,7 +15,10 @@ class AppContent extends Component {
       <Grid columns={2} stackable divided relaxed style={style.grid}>
         <Grid.Column>
           <Segment>
-            <ResultList hits={this.props.hits} />
+            <ResultList
+              hits={this.props.hits}
+              isLoading={this.props.isLoading}
+            />
           </Segment>
         </Grid.Column>
         <Grid.Column>

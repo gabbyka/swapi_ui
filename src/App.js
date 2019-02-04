@@ -27,7 +27,8 @@ class App extends Component {
   }
 
   fetchDataFromSWAPI(activeMenuItem) {
-    let properAPI = API + activeMenuItem.toLowerCase() + "/";
+    this.setState({ isLoading: true });
+    let properAPI = `${API + activeMenuItem.toLowerCase()}/`;
     axios
       .get(properAPI)
       .then(result =>
@@ -52,7 +53,7 @@ class App extends Component {
           onMenuItemChange={this.handleMenuItemChange}
         />
 
-        <AppContent hits={this.state.hits} />
+        <AppContent hits={this.state.hits} isLoading={this.state.isLoading} />
       </React.Fragment>
     );
   }
