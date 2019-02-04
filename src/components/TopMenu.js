@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu } from "semantic-ui-react";
 
-const menuItems = ["People", "Starships", "Planets", "Films", "Vehicles"];
+const menuItems = ["People", "Starships", "Planets", "Vehicles"];
 
 const TopMenu = ({ activeMenuItem, onMenuItemChange }) => (
   <Menu inverted>
